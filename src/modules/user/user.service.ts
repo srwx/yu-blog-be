@@ -1,5 +1,5 @@
 import { UserRepository } from "./user.repository"
-import { CreateUserRequestBody } from "./user.type"
+import { CreateUserBodyRequest } from "./user.schema"
 
 export class UserService {
   private userRepository: UserRepository
@@ -28,7 +28,7 @@ export class UserService {
     }
   }
 
-  async createUser(userData: CreateUserRequestBody) {
+  async createUser(userData: CreateUserBodyRequest) {
     try {
       const newUser = await this.userRepository.createUser(userData)
       return newUser

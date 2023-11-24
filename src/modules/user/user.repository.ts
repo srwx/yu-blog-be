@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client"
-import { CreateUserRequestBody } from "./user.type"
+import { CreateUserBodyRequest } from "./user.schema"
 
 export class UserRepository {
   private prisma = new PrismaClient()
@@ -30,7 +30,7 @@ export class UserRepository {
     }
   }
 
-  async createUser(userData: CreateUserRequestBody) {
+  async createUser(userData: CreateUserBodyRequest) {
     try {
       const newUser = await this.prisma.user.create({ data: userData })
       // TODO: how to handle error if prisma create error
