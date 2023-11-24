@@ -2,6 +2,7 @@ import express from "express"
 import { UserService } from "./user.service"
 import { validateBodyRequest } from "../../middlewares/validateBodyRequest"
 import { CreateUserBodyRequest } from "./user.schema"
+import { ExpressCustomRequestBody } from "../../types/express"
 
 const userController = express.Router()
 const userService = new UserService()
@@ -30,7 +31,7 @@ userController.get("/:id", async (req, res) => {
 userController.post(
   "/",
   validateBodyRequest(CreateUserBodyRequest),
-  async (req, res) => {
+  async (req: ExpressCustomRequestBody<CreateUserBodyRequest>, res) => {
     try {
       const userData = req.body
       const createdUser = await userService.createUser(userData)
