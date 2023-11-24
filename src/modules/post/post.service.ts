@@ -8,9 +8,33 @@ export class PostService {
     this.postRepository = new PostRepository()
   }
 
-  async getAllPosts() {}
+  async getAllPosts() {
+    try {
+      // TODO
+    } catch (err) {
+      console.error("Error from PostService")
+      console.error(err)
+      throw new Error("Error from PostService")
+    }
+  }
 
-  async getPostById(id: string) {}
+  async getPostById(id: string) {
+    try {
+      // TODO
+    } catch (err) {
+      console.error("Error from PostService")
+      console.error(err)
+      throw new Error("Error from PostService")
+    }
+  }
 
-  async createPost(postData: CreatePostBodyRequest) {}
+  async createPost(postData: CreatePostBodyRequest) {
+    try {
+      // TODO
+    } catch (err) {
+      console.error("Error from PostService")
+      console.error(err)
+      throw new Error("Error from PostService")
+    }
+  }
 }

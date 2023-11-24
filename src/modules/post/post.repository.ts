@@ -8,9 +8,31 @@ export class PostRepository {
     this.prisma = new PrismaClient()
   }
 
-  async getAllPosts() {}
+  async getAllPosts() {
+    try {
+      const posts = await this.prisma.post.findMany()
+    } catch (err) {
+      console.error("Error from PostRepository")
+      console.error(err)
+      throw new Error("Error from PostRepository")
+    }
+  }
 
-  async getPostById(id: string) {}
+  async getPostById(id: string) {
+    try {
+    } catch (err) {
+      console.error("Error from PostRepository")
+      console.error(err)
+      throw new Error("Error from PostRepository")
+    }
+  }
 
-  async createPost(postData: CreatePostBodyRequest) {}
+  async createPost(postData: CreatePostBodyRequest) {
+    try {
+    } catch (err) {
+      console.error("Error from PostRepository")
+      console.error(err)
+      throw new Error("Error from PostRepository")
+    }
+  }
 }
