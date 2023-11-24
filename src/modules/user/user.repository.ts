@@ -2,7 +2,11 @@ import { PrismaClient } from "@prisma/client"
 import { CreateUserBodyRequest } from "./user.schema"
 
 export class UserRepository {
-  private prisma = new PrismaClient()
+  private prisma
+
+  constructor() {
+    this.prisma = new PrismaClient()
+  }
 
   async getAllUsers() {
     try {
