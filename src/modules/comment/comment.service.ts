@@ -1,6 +1,6 @@
 import { CommentRepository } from "./comment.repository"
 
-export class PostService {
+export class CommentService {
   private commentRepository
 
   constructor() {
