@@ -13,6 +13,7 @@ export class UserService {
       const users = await this.userRepository.getAllUsers()
       return users
     } catch (err) {
+      console.error("Error from UserService")
       console.error(err)
       throw new Error("Error from UserService")
     }
@@ -23,6 +24,7 @@ export class UserService {
       const user = await this.userRepository.getUserById(id)
       return user
     } catch (err) {
+      console.error("Error from UserService")
       console.error(err)
       throw new Error("Error from UserService")
     }
@@ -33,6 +35,7 @@ export class UserService {
       const newUser = await this.userRepository.createUser(userData)
       return newUser
     } catch (err) {
+      console.error("Error from UserService")
       console.error(err)
       throw new Error("Error from UserService")
     }

@@ -11,9 +11,10 @@ export class UserRepository {
   async getAllUsers() {
     try {
       const users = await this.prisma.user.findMany()
-      // TODO: how to handle error if prisma findMany error
       return users
     } catch (err) {
+      // TODO: how to handle error if prisma findMany error
+      console.error("Error from UserRepository")
       console.error(err)
       throw new Error("Error from UserRepository")
     }
@@ -26,9 +27,10 @@ export class UserRepository {
           id,
         },
       })
-      // TODO: how to handle error if prisma findUnique error
       return user
     } catch (err) {
+      // TODO: how to handle error if prisma findUnique error
+      console.error("Error from UserRepository")
       console.error(err)
       throw new Error("Error from UserRepository")
     }
@@ -37,9 +39,10 @@ export class UserRepository {
   async createUser(userData: CreateUserBodyRequest) {
     try {
       const newUser = await this.prisma.user.create({ data: userData })
-      // TODO: how to handle error if prisma create error
       return newUser
     } catch (err) {
+      // TODO: how to handle error if prisma create error
+      console.error("Error from UserRepository")
       console.error(err)
       throw new Error("Error from UserRepository")
     }

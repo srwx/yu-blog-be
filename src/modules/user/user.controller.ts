@@ -12,6 +12,7 @@ userController.get("/", async (req, res) => {
     const users = await userService.getAllUsers()
     res.status(200).json(users)
   } catch (err) {
+    console.error("Error from UserController")
     console.error(err)
     res.status(500).send(err)
   }
@@ -23,6 +24,7 @@ userController.get("/:id", async (req, res) => {
     const user = await userService.getUserById(id)
     res.status(200).json(user)
   } catch (err) {
+    console.error("Error from UserController")
     console.error(err)
     res.status(500).send(err)
   }
@@ -37,6 +39,7 @@ userController.post(
       const createdUser = await userService.createUser(userData)
       res.status(200).json(createdUser)
     } catch (err) {
+      console.error("Error from UserController")
       console.error(err)
       res.status(500).send(err)
     }
