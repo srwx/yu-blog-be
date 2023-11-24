@@ -9,13 +9,32 @@ export class UserService {
   }
 
   async getAllUsers() {
-    const users = await this.userRepository.getAllUsers()
-    return users
+    try {
+      const users = await this.userRepository.getAllUsers()
+      return users
+    } catch (err) {
+      console.error(err)
+      throw new Error("Error from UserService")
+    }
+  }
+
+  async getUserById(id: string) {
+    try {
+      const user = await this.userRepository.getUserById(id)
+      return user
+    } catch (err) {
+      console.error(err)
+      throw new Error("Error from UserService")
+    }
   }
 
   async createUser(userData: CreateUserRequestBody) {
-    const newUser = await this.userRepository.createUser(userData)
-    // TODO: how to handle error that come from repository
-    return newUser
+    try {
+      const newUser = await this.userRepository.createUser(userData)
+      return newUser
+    } catch (err) {
+      console.error(err)
+      throw new Error("Error from UserService")
+    }
   }
 }
