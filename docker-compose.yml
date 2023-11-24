@@ -1,13 +1,14 @@
 version: "3.9"
 
 services:
-  postgres:
+  postgresql:
     image: postgres:15-alpine
+    restart: always
     ports:
       - 5432:5432
     volumes:
-      - ~/apps/postgres:/var/lib/postgresql/data
+      - ./data/postgresql:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=username
-      - POSTGRES_DB=yu-blog
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: sorawong
+      POSTGRES_DB: yu-blog
