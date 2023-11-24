@@ -1,0 +1,19 @@
+{
+  "name": "yu-blog-be",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sorawong L. <Sorawong2543@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.5",
+    "nodemon": "^3.0.1",
+    "prisma": "^5.6.0"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
