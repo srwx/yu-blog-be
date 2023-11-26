@@ -13,8 +13,14 @@ Define a simple data model for a blog application with the following entities:
 ### Authenticate
 
 - [ ] New user shall sign up with (at least) email and password
-- [ ] The user shall receive the signup email to confirm that the user is the owner of email
 - [ ] User shall login with registered email and correct password
+- [ ] (Optional) email and password validation
+  - [ ] Valid email
+  - [ ] Valid password that
+    - [ ] Contain at least 8 characters
+    - [ ] Contain at least 1 uppercase character
+    - [ ] Contain at least 1 numeric character
+- [ ] (Optional) The user shall receive the signup email to confirm that the user is the owner of email
 
 ### Middleware
 
