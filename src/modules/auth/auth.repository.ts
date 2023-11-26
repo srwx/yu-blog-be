@@ -14,9 +14,9 @@ export class AuthRepository {
       return newUser
     } catch (err) {
       // TODO: how to handle error if prisma create error
-      console.error("Error from UserRepository")
+      console.error("Error from AuthRepository")
       console.error(err)
-      throw new Error("Error from UserRepository")
+      throw new Error("Error from AuthRepository")
     }
   }
 }

@@ -18,9 +18,9 @@ export class AuthService {
       const newUser = await this.authRepository.createUser(userData)
       return newUser
     } catch (err) {
-      console.error("Error from UserService")
+      console.error("Error from AuthService")
       console.error(err)
-      throw new Error("Error from UserService")
+      throw new Error("Error from AuthService")
     }
   }
 
