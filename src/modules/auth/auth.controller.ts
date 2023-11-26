@@ -14,7 +14,8 @@ authController.post(
     try {
       const userData = req.body
       const createdUser = await authService.createUser(userData)
-      // TODO: create jwt, add jwt to cookie and send cookie to client
+      const token = authService.createToken(createdUser.id) // create jwt
+      authService.setTokenToCookie(res, token) // add jwt to cookie
       res.status(200).json(createdUser)
     } catch (err) {
       console.error("Error from AuthController")
