@@ -14,6 +14,7 @@ Define a simple data model for a blog application with the following entities:
 
 - [ ] New user shall sign up with (at least) email and password
 - [ ] User shall login with registered email and correct password
+- [ ] Error response readable text (This username already exists, Incorrect username or password)
 - [ ] (Optional) email and password validation
   - [ ] Valid email
   - [ ] Valid password that
