@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken"
 import { type Response } from "express"
+import bcrypt from "bcrypt"
 import { CreateUserBodyRequest } from "../user/user.schema"
 import { AuthRepository } from "./auth.repository"
 import { environment } from "../../const/env"
@@ -40,5 +41,26 @@ export class AuthService {
       maxAge: this.maxJwtAge,
       secure: environment.ENABLE_COOKIE_SECURE,
     })
+  }
+
+  /**
+   * @param plainTextPassword plain text of password
+   * @returns a hashed string of password
+   */
+  getHashPassword = (plainTextPassword: string) => {
+    const saltRound = 10
+    const hashPassword = bcrypt.hashSync(plainTextPassword, saltRound)
+    return hashPassword
+  }
+
+  /**
+   * A function to check is plain text password is match with hash string
+   * @param plainTextPassword plain text of password
+   * @param hash a hashed string of password, you can get hashed string by getHashPassword()
+   * @returns boolean of result
+   */
+  isPasswordCorrect = (plainTextPassword: string, hash: string) => {
+    const result = bcrypt.compareSync(plainTextPassword, hash)
+    return result
   }
 }
