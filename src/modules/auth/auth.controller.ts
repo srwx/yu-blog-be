@@ -22,7 +22,14 @@ authController.post(
       })
       const token = authService.createToken(createdUser.id) // create jwt
       authService.setTokenToCookie(res, token) // add jwt to cookie
-      res.status(200).json(createdUser)
+      res.status(200).json({
+        message: "Register success",
+        user: {
+          id: createdUser.id,
+          email: createdUser.email,
+          username: createdUser.username,
+        },
+      })
     } catch (err) {
       console.error("Error from AuthController")
       console.error(err)
