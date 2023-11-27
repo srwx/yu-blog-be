@@ -36,4 +36,34 @@ authController.post(
   }
 )
 
+authController.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body
+    const user = await authService.getUserByEmail(email)
+    if (!user)
+      res.status(400).json({ message: "Email or password is incorrect" }) // email not found in db
+
+    const isPasswordCorrect = authService.isPasswordCorrect(
+      password,
+      user.password
+    )
+    if (!isPasswordCorrect)
+      res.status(400).json({ message: "Email or password is incorrect" }) // password is incorrect
+
+    const token = authService.createToken(user.id)
+    authService.setTokenToCookie(res, token)
+    res.status(200).json({
+      message: "Login success",
+      user: {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+      },
+    })
+  } catch (err) {
+    console.error("Error from AuthController")
+    res.status(500).send(err)
+  }
+})
+
 export default authController

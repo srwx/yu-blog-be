@@ -19,4 +19,24 @@ export class AuthRepository {
       throw new Error("Error from AuthRepository")
     }
   }
+
+  async getUserByEmail(email: string) {
+    try {
+      const user = await this.prisma.user.findUnique({ where: { email } })
+      return user
+    } catch (err) {
+      console.error(err)
+      throw new Error("Error, AuthRepository, getUserByEmail")
+    }
+  }
+
+  async getUserById(id: string) {
+    try {
+      const user = await this.prisma.user.findUnique({ where: { id } })
+      return user
+    } catch (err) {
+      console.error(err)
+      throw new Error("Error, AuthRepository, getUserById")
+    }
+  }
 }

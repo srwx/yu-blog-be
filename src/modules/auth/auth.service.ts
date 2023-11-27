@@ -63,4 +63,10 @@ export class AuthService {
     const result = bcrypt.compareSync(plainTextPassword, hash)
     return result
   }
+
+  async getUserByEmail(email: string) {
+    const user = await this.authRepository.getUserByEmail(email)
+    if (!user) throw new Error("User not found")
+    return user
+  }
 }
