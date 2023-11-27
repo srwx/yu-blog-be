@@ -20,8 +20,6 @@ authController.post(
         username,
         password: hashedPassword,
       })
-      const token = authService.createToken(createdUser.id) // create jwt
-      authService.setTokenToCookie(res, token) // add jwt to cookie
       res.status(200).json({
         message: "Register success",
         user: {
