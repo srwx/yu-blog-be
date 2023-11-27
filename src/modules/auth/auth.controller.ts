@@ -13,7 +13,13 @@ authController.post(
   async (req: ExpressCustomRequestBody<CreateUserBodyRequest>, res) => {
     try {
       const userData = req.body
-      const createdUser = await authService.createUser(userData)
+      const { email, password, username } = userData
+      const hashedPassword = authService.getHashPassword(password)
+      const createdUser = await authService.createUser({
+        email,
+        username,
+        password: hashedPassword,
+      })
       const token = authService.createToken(createdUser.id) // create jwt
       authService.setTokenToCookie(res, token) // add jwt to cookie
       res.status(200).json(createdUser)
