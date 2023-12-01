@@ -5,7 +5,8 @@
   "author": "Sorawong L. <Sorawong2543@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon -x 'node src/index.ts'",
+    "migrate": "yarn prisma migrate dev"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
