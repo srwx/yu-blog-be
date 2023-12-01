@@ -12,8 +12,8 @@ Define a simple data model for a blog application with the following entities:
 
 ### Authenticate
 
-- [ ] New user shall sign up with (at least) email and password
-- [ ] User shall login with registered email and correct password
+- [x] New user shall sign up with (at least) email and password
+- [x] User shall login with registered email and correct password
 - [ ] Error response readable text (This username already exists, Incorrect username or password)
 - [ ] (Optional) email and password validation
   - [ ] Valid email
@@ -26,7 +26,7 @@ Define a simple data model for a blog application with the following entities:
 ### Middleware
 
 - [ ] Every requests shall be logged by logging middleware. (Use Pino as a custom logger)
-- [ ] Protect authentication-required routes using middleware (Check request's header or cookies - depends on your design choice)
+- [x] Protect authentication-required routes using middleware (Check request's header or cookies - depends on your design choice)
 
 ### Post
 
