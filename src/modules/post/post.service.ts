@@ -37,9 +37,10 @@ export class PostService {
     }
   }
 
-  async createPost(postData: CreatePostBodyRequest) {
+  async createPost(postData: CreatePostBodyRequest, userId: string) {
     try {
-      // TODO
+      const createdPost = await this.postRepository.createPost(postData, userId)
+      return createdPost
     } catch (err) {
       console.error("Error from PostService")
       console.error(err)

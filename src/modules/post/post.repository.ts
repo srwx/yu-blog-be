@@ -36,8 +36,12 @@ export class PostRepository {
     }
   }
 
-  async createPost(postData: CreatePostBodyRequest) {
+  async createPost(postData: CreatePostBodyRequest, userId: string) {
     try {
+      const createdPost = this.prisma.post.create({
+        data: { content: postData.content, authorId: userId },
+      })
+      return createdPost
     } catch (err) {
       console.error("Error from PostRepository")
       console.error(err)
