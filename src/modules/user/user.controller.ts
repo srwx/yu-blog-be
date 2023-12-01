@@ -1,8 +1,5 @@
 import express from "express"
 import { UserService } from "./user.service"
-import { validateBodyRequest } from "../../middlewares/validateBodyRequest"
-import { CreateUserBodyRequest } from "./user.schema"
-import { ExpressCustomRequestBody } from "../../types/express"
 
 const userController = express.Router()
 const userService = new UserService()

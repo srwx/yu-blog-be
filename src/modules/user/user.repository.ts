@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client"
-import { CreateUserBodyRequest } from "./user.schema"
 
 export class UserRepository {
   private prisma

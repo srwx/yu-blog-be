@@ -1,5 +1,4 @@
 import { UserRepository } from "./user.repository"
-import { CreateUserBodyRequest } from "./user.schema"
 
 export class UserService {
   private userRepository: UserRepository
