@@ -35,6 +35,10 @@ export class AuthService {
     })
   }
 
+  verifyToken(token: string) {
+    return jwt.verify(token, environment.JWT_SECRET)
+  }
+
   setTokenToCookie(response: Response, token: string) {
     response.cookie("jwt", token, {
       httpOnly: true,
