@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor() {
     this.authRepository = new AuthRepository()
-    this.maxJwtAge = 3 * 60 * 60 * 24 // jwt will expired in 3 days after created
+    this.maxJwtAge = 3 * 60 * 60 * 24 * 1000 // jwt will expired in 3 days after created
   }
 
   async createUser(userData: CreateUserBodyRequest) {
@@ -72,5 +72,17 @@ export class AuthService {
     const user = await this.authRepository.getUserByEmail(email)
     if (!user) throw new Error("User not found")
     return user
+  }
+
+  getUserIdByToken(token: string) {
+    const isValidJwt = this.verifyToken(token)
+
+    if (!isValidJwt) throw new Error("Invalid token")
+
+    // TODO: refactor
+    const user = jwt.decode(token) as { id: string }
+
+    if (!user) throw new Error("No user data")
+    return user.id
   }
 }
