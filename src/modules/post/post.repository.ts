@@ -27,6 +27,15 @@ export class PostRepository {
     }
   }
 
+  async getPostsByUserId(userId: string) {
+    try {
+      const posts = this.prisma.post.findMany({ where: { authorId: userId } })
+      return posts
+    } catch (err) {
+      throw new Error("Error from PostRepo")
+    }
+  }
+
   async createPost(postData: CreatePostBodyRequest) {
     try {
     } catch (err) {

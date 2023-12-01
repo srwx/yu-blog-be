@@ -2,6 +2,7 @@ import express from "express"
 import cookieParser from "cookie-parser"
 import userController from "./modules/user/user.controller"
 import authController from "./modules/auth/auth.controller"
+import postController from "./modules/post/post.controller"
 
 const app = express()
 const PORT = 3001
@@ -11,6 +12,7 @@ app.use(cookieParser()) // middleware ที่ทำให้เรา get cook
 
 app.use("/api/auth", authController)
 app.use("/api/user", userController)
+app.use("/api/post", postController)
 
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}...`)

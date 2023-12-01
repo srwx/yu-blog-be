@@ -28,6 +28,15 @@ export class PostService {
     }
   }
 
+  async getPostsByUserId(userId: string) {
+    try {
+      const posts = await this.postRepository.getPostsByUserId(userId)
+      return posts
+    } catch (err) {
+      throw new Error("Error from PostService")
+    }
+  }
+
   async createPost(postData: CreatePostBodyRequest) {
     try {
       // TODO
