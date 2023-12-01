@@ -29,15 +29,4 @@ export class UserService {
       throw new Error("Error from UserService")
     }
   }
-
-  async createUser(userData: CreateUserBodyRequest) {
-    try {
-      const newUser = await this.userRepository.createUser(userData)
-      return newUser
-    } catch (err) {
-      console.error("Error from UserService")
-      console.error(err)
-      throw new Error("Error from UserService")
-    }
-  }
 }

@@ -30,22 +30,6 @@ userController.get("/:id", async (req, res) => {
   }
 })
 
-userController.post(
-  "/",
-  validateBodyRequest(CreateUserBodyRequest),
-  async (req: ExpressCustomRequestBody<CreateUserBodyRequest>, res) => {
-    try {
-      const userData = req.body
-      const createdUser = await userService.createUser(userData)
-      res.status(200).json(createdUser)
-    } catch (err) {
-      console.error("Error from UserController")
-      console.error(err)
-      res.status(500).send(err)
-    }
-  }
-)
-
 export default userController
 
 // req.body มี type

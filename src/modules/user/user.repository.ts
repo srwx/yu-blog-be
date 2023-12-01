@@ -36,18 +36,6 @@ export class UserRepository {
     }
   }
 
-  async createUser(userData: CreateUserBodyRequest) {
-    try {
-      const newUser = await this.prisma.user.create({ data: userData })
-      return newUser
-    } catch (err) {
-      // TODO: how to handle error if prisma create error
-      console.error("Error from UserRepository")
-      console.error(err)
-      throw new Error("Error from UserRepository")
-    }
-  }
-
   // TODO: edit user
   async editUser() {}
 
