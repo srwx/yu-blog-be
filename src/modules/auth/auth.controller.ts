@@ -61,8 +61,8 @@ authController.post("/login", async (req, res) => {
       },
     })
   } catch (err) {
-    console.error("Error from AuthController")
-    res.status(500).send(err)
+    console.error(err)
+    res.status(401).json({ message: "Email not found" })
   }
 })
 
