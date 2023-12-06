@@ -10,9 +10,9 @@ export class PostService {
 
   async getAllPosts() {
     try {
-      // TODO
+      const posts = await this.postRepository.getAllPosts()
+      return posts
     } catch (err) {
-      console.error("Error from PostService")
       console.error(err)
       throw new Error("Error from PostService")
     }

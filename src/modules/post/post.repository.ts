@@ -10,9 +10,11 @@ export class PostRepository {
 
   async getAllPosts() {
     try {
-      const posts = await this.prisma.post.findMany()
+      const posts = await this.prisma.post.findMany({
+        include: { author: { select: { username: true, email: true } } },
+      })
+      return posts
     } catch (err) {
-      console.error("Error from PostRepository")
       console.error(err)
       throw new Error("Error from PostRepository")
     }

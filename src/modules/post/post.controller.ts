@@ -12,9 +12,9 @@ const authService = new AuthService()
 
 postController.get("/", async (req, res) => {
   try {
-    // TODO: get all posts
+    const posts = await postService.getAllPosts()
+    res.status(200).json(posts)
   } catch (err) {
-    console.error("Error from PostController")
     console.error(err)
     res.status(500).send(err)
   }
