@@ -1,6 +1,13 @@
 import { Router } from "express"
+import { requireAuth } from "../../middlewares/requireAuth"
+import { validateBodyRequest } from "../../middlewares/validateBodyRequest"
+import { CreateCommentBodyRequest } from "./comment.schema"
+import { AuthService } from "../auth/auth.service"
+import { CommentService } from "./comment.service"
 
 const commentController = Router()
+const authService = new AuthService()
+const commentService = new CommentService()
 
 commentController.get("/:postId", async (req, res) => {
   try {
@@ -20,13 +27,28 @@ commentController.get("/:postId/:commentId", async (req, res) => {
   }
 })
 
-commentController.post("/:postId", async (req, res) => {
-  try {
-    // TODO: create comment in specific postId
-  } catch (err) {
-    console.error(err)
-    res.status(500).send("Comment Controller error")
+commentController.post(
+  "/:postId",
+  requireAuth,
+  validateBodyRequest(CreateCommentBodyRequest),
+  async (req, res) => {
+    try {
+      const { postId } = req.params
+      const { content } = req.body
+      const userId = authService.getUserIdByToken(req.cookies.jwt)
+      const createdComment = await commentService.createComment(
+        userId,
+        postId,
+        content
+      )
+      res
+        .status(200)
+        .json({ message: "Create comment success", comment: createdComment })
+    } catch (err) {
+      console.error(err)
+      res.status(500).send("Comment Controller error")
+    }
   }
-})
+)
 
 export default commentController
