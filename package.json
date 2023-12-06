@@ -2,7 +2,7 @@
   "name": "yu-blog-be",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Sorawong L. <Sorawong2543@gmail.com>",
+  "author": "Sorawong L.",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon -x 'node src/index.ts'",
