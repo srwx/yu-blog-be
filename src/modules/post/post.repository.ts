@@ -51,4 +51,15 @@ export class PostRepository {
       throw new Error("Error from PostRepository")
     }
   }
+
+  async deletePostByPostId(postId: string) {
+    try {
+      const deletedUser = await this.prisma.post.delete({
+        where: { id: postId },
+      })
+      return deletedUser
+    } catch (err) {
+      throw new Error("Error from PostRepository, deletePostByPostId")
+    }
+  }
 }

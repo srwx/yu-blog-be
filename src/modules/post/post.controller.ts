@@ -58,4 +58,20 @@ postController.post(
   }
 )
 
+postController.delete("/:postId", requireAuth, async (req, res) => {
+  try {
+    const { postId } = req.params
+    const deletedUser = await postService.deletePostByPostId(postId)
+    res
+      .status(200)
+      .json({
+        message: `Delete post ${postId} success`,
+        deletedUser: deletedUser,
+      })
+  } catch (err) {
+    console.log(err)
+    res.status(400).send(err)
+  }
+})
+
 export default postController

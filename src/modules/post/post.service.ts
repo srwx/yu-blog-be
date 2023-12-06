@@ -42,7 +42,16 @@ export class PostService {
       const createdPost = await this.postRepository.createPost(postData, userId)
       return createdPost
     } catch (err) {
-      console.error("Error from PostService")
+      console.error(err)
+      throw new Error("Error from PostService")
+    }
+  }
+
+  async deletePostByPostId(postId: string) {
+    try {
+      const deletedUser = await this.postRepository.deletePostByPostId(postId)
+      return deletedUser
+    } catch (err) {
       console.error(err)
       throw new Error("Error from PostService")
     }
