@@ -18,4 +18,16 @@ export class CommentRepository {
       throw new Error("error createComment repo")
     }
   }
+
+  async deleteCommentByCommentId(commentId: string) {
+    try {
+      const deletedComment = this.prisma.comment.delete({
+        where: { id: commentId },
+      })
+      return deletedComment
+    } catch (err) {
+      console.error(err)
+      throw new Error("error deleteComment repo")
+    }
+  }
 }

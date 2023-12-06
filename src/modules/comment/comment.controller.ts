@@ -51,4 +51,20 @@ commentController.post(
   }
 )
 
+commentController.delete("/:commentId", requireAuth, async (req, res) => {
+  try {
+    const { commentId } = req.params
+    // TODO: verify is logged-in user is owner of this commentId
+    const deletedComment = await commentService.deleteCommentByCommentId(
+      commentId
+    )
+    res
+      .status(200)
+      .json({ message: "Delete comment success", comment: deletedComment })
+  } catch (err) {
+    console.error(err)
+    res.status(400).send("Comment Controller error")
+  }
+})
+
 export default commentController

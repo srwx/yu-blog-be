@@ -20,4 +20,15 @@ export class CommentService {
       throw new Error("error")
     }
   }
+
+  async deleteCommentByCommentId(commentId: string) {
+    try {
+      const deletedComment =
+        await this.commentRepository.deleteCommentByCommentId(commentId)
+      return deletedComment
+    } catch (err) {
+      console.error(err)
+      throw new Error("error")
+    }
+  }
 }
